@@ -70,7 +70,7 @@ single-product:defined {
     }
 
     .button {
-        background-image: linear-gradient(#eee 50%, lighten($button-blue, 5%));
+        background-image: linear-gradient(#eee 50%, lighten($button-blue, 25%));
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
         font-size: 1.4rem;
         padding: 0.4rem 1rem;
@@ -93,4 +93,14 @@ single-product:defined {
 
 .flex-dir-rev-row {
     flex-direction: row !important;
+}
+
+.button {
+    background-image: linear-gradient(#eee 50%, lighten($button-blue, 25%));
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    line-height: 1.4;
 }

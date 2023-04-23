@@ -1,5 +1,7 @@
 "use strict";
-import {fetchFromApi, apiKey, baseURL} from '../utils.js';
+import productsModel from "../models/products.js";
+import ordersModel from "../models/orders.js";
+
 
 export default class SingleOrder extends HTMLElement {
     static get observedAttributes() {
@@ -21,43 +23,30 @@ export default class SingleOrder extends HTMLElement {
      */
     async packOrder(orderIdAmountName, order) {
         let stuffIsWorkingOk = 0;
+        // console.log(orderIdAmountName);
 
         for (const val of orderIdAmountName) {
-            let aProductFrStorage = await fetchFromApi(`products/${val[0]}`);
+            let aProductFrStorage = await productsModel.getOneProduct(`${val[0]}`);
             var products = {
                 id: val[0],
                 name: val[2],
-                api_key: apiKey,
-                stock: aProductFrStorage.data.stock - val[1]
+                stock: aProductFrStorage.stock - val[1]
             };
-            const response = await fetch(`${baseURL}/products`, {
-                body: JSON.stringify(products),
-                headers: {
-                    'content-type': 'application/json'
-                },
-                method: 'PUT'
-            });
+            const response = await productsModel.updateProduct(products);
 
             console.log(response.status);
             stuffIsWorkingOk = response.status;
-            if (response.status != 204) { break; }
+            if (response.status > 299) { break; }
         }
 
         // If everything above went ok(204) update the order status to 200
-        if (stuffIsWorkingOk === 204) {
+        if (stuffIsWorkingOk <= 204) {
             var currentOrder = {
                 id: order.id,
                 name: order.name,
-                api_key: apiKey,
                 status_id: 200
             };
-            const response = await fetch(`${baseURL}/orders`, {
-                body: JSON.stringify(currentOrder),
-                headers: {
-                    'content-type': 'application/json'
-                },
-                method: 'PUT'
-            });
+            const response = await ordersModel.updateOrderStatus(currentOrder);
 
             console.log("Response status:", response.status);
             this.remove();
@@ -78,13 +67,11 @@ export default class SingleOrder extends HTMLElement {
         });
 
         // Fetch all products.
-        // __FIX__ would have been better to fetch only the specified product
-        // instead of all __FIX__
-        const result = await fetchFromApi("products");
+        const result = await productsModel.getProducts();
 
         // Checks if the specified amount of products is available
         for (const idAmount of orderIdAmountName) {
-            for (const x of result.data) {
+            for (const x of result) {
                 if (x.id === idAmount[0]) {
                     isStockedEnough = x.stock >= idAmount[1];
                     idAmount.push(x.stock >= idAmount[1]);

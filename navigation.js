@@ -8,6 +8,10 @@ export default class Navigation extends HTMLElement {
     }
 
 
+    /**
+     * @function mirroredScreen
+     * @description Reverses the horizontal view
+     */
     mirroredScreen() {
         const cont = document.getElementsByClassName("single-order-container");
 
@@ -25,7 +29,9 @@ export default class Navigation extends HTMLElement {
         let navigationLinks = "";
 
         for (let path in routes) {
-            navigationLinks += `<a href='#${path}'>${routes[path].icon}</a>`;
+            if (!routes[path].hidden){ // Hide unwanted routes
+                navigationLinks += `<a href='#${path}'>${routes[path].icon}</a>`;
+            }
         }
         navigationLinks += `<div id="mirror"><i class="fa-solid fa-rotate"></i></div>`;
         this.innerHTML = `<nav class="bottom-nav">${navigationLinks}</nav>`;

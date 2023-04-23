@@ -13,6 +13,17 @@ export default class Router extends HTMLElement {
             "packlist": {
                 view: "<packlist-view></packlist-view>",
                 icon: `<i class="fa-solid fa-list-check"></i>`
+            },
+            "deliveries": {
+                view: "<deliveries-view></deliveries-view>",
+                name: "Inleveranser",
+                icon: `<i class="fa-solid fa-truck-ramp-box"></i>`
+            },
+            "deliveries-form": {
+                view: "<new-delivery></new-delivery>",
+                icon: `<i class="fa-solid fa-list-check"></i>`,
+                name: "Ny inleverans",
+                hidden: true
             }
         };
     }

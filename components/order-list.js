@@ -1,5 +1,5 @@
 "use strict";
-import {apiKey, baseURL} from '../utils.js';
+import ordersModel from "../models/orders.js";
 // Exports. ProductList'ärver' eller förlänger funktionen av HTMLElement
 export default class OrderList extends HTMLElement {
     constructor() {
@@ -8,14 +8,12 @@ export default class OrderList extends HTMLElement {
     }
 
     async connectedCallback() {
-        const response = await fetch(`${baseURL}/orders?api_key=${apiKey}`);
-        const result = await response.json();
-
+        const result = await ordersModel.getOrders();
         let isStatus100 = function(status) {
             return status.status_id === 100;
         };
 
-        this.orders = result.data.filter(isStatus100);
+        this.orders = result.filter(isStatus100);
 
         this.render();
     }

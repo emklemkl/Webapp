@@ -12,11 +12,15 @@ import OrderList from "./components/order-list.js";
 import SingleProduct from "./components/single-product.js";
 import NotFound from "./components/not-found.js";
 import SingleOrder from "./components/single-order.js";
+import DeliveriesList from "./components/deliveries-list.js";
+import NewDelivery from "./components/new-delivery.js";
 
 // Views import
 //
 import ProductsView from "./views/products.js";
 import PackListView from "./views/packlist.js";
+import DeliveriesView from "./views/deliveries.js";
+
 
 // Router
 //
@@ -31,8 +35,11 @@ customElements.define("product-list", ProductList);
 customElements.define("single-product", SingleProduct);
 customElements.define("order-list", OrderList);
 customElements.define("single-order", SingleOrder);
+customElements.define("deliveries-list", DeliveriesList);
+customElements.define("new-delivery", NewDelivery);
 
 // Views
 //
 customElements.define("products-view", ProductsView);
 customElements.define("packlist-view", PackListView);
+customElements.define("deliveries-view", DeliveriesView);
