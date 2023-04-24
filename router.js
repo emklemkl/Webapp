@@ -20,13 +20,14 @@ export default class Router extends HTMLElement {
                 icon: `<i class="fa-solid fa-truck-ramp-box"></i>`
             },
             "deliveries-form": {
-                view: "<new-delivery></new-delivery>",
+                view: "<deliveries-form-view></deliveries-form-view>",
                 icon: `<i class="fa-solid fa-list-check"></i>`,
                 name: "Ny inleverans",
                 hidden: true
             }
         };
     }
+
 
     get routes() {
         return this.allRoutes;

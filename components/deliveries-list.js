@@ -10,14 +10,17 @@ export default class DeliveriesList extends HTMLElement {
 
     async connectedCallback() {
         this.deliveries = await deliveriesModel.getDeliveries();
-        console.log(this.deliveries);
+        // console.log(this.deliveries);
         this.render();
     }
     render() {
-
         /**
-         * Skapa singel-deliveries 
+         * Skapa singel-deliveries
          */
-        this.innerHTML = `<h2>Inleveranser</h2><a href='#deliveries-form' class="button">Ny leverans</a>`;
+        this.innerHTML = `<h2>Inleveranser</h2>
+            <a href='#deliveries-form' class="button wide-button">Ny leverans</a>
+            <div class="single-wrapper">
+            <single-delivery></single-delivery>
+            </div>`;
     }
 }

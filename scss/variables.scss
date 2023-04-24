@@ -5,6 +5,10 @@ $row-color: #eecdae;
 $header-color: #eaa665;
 $body-font-color: #333;
 $button-blue: #34519e;
+$clicked-button-blue: darken($button-blue, 2%);
 
 $font-body: sans-serif;
 $font-heading: serif;
+
+$body-font-size: 1.2rem;
+$line-height: 1.4rem;

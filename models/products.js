@@ -23,6 +23,7 @@ const products = {
             api_key: apiKey
         };
 
+        console.log("🚀 ~ file: products.js:22 ~ updateProduct ~ updatedProduct:", updatedProduct);
         const response = await fetch(`${baseURL}/products`, {
             body: JSON.stringify(updatedProduct),
             headers: {

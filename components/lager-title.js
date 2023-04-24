@@ -21,6 +21,6 @@ export default class LagerTitle extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `<h1>${this.name}'s lagerapp</h1>`;
+        this.innerHTML = `<h1 class="top-h1">${this.name}'s lagerapp</h1>`;
     }
 }

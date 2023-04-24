@@ -1,38 +1,39 @@
 "use strict";
+
 import { apiKey, baseURL } from "../utils.js";
 
 const deliveries = {
     getDeliveries: async function getDeliveries() {
         const response = await fetch(`${baseURL}/deliveries?api_key=${apiKey}`);
         const result = await response.json();
-        // console.log(result.data);
 
         return result.data;
     },
 
-    // getOneProduct: async function getOneProduct(productId) {
-    //     const response = await fetch(`${baseURL}/deliveries/${productId}?api_key=${apiKey}`);
-    //     const result = await response.json();
+    /**
+     * @function addDelivery
+     * @param {object} newDeliveryData
+     * @returns Status of request (Int)
+     */
+    addDelivery: async function addDelivery(newDeliveryData) {
+        const newDelivery = {
+            product_id: newDeliveryData.product_id,
+            amount: newDeliveryData.current_stock + newDeliveryData.amount,
+            delivery_date: newDeliveryData.date,
+            comment:  newDeliveryData.comment,
+            api_key: apiKey
+        };
 
-    //     return result.data;  
-    // },
+        const response = await fetch(`${baseURL}/deliveries`, {
+            body: JSON.stringify(newDelivery),
+            headers: {
+                'content-type': 'application/json'
+            },
+            method: 'POST'
+        });
 
-    // updateProduct: async function updateProduct(productObject) {
-    //     const updatedProduct = {
-    //         ...productObject,
-    //         api_key: apiKey
-    //     };
-
-    //     const response = await fetch(`${baseURL}/deliveries`, {
-    //         body: JSON.stringify(updatedProduct),
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         method: 'PUT'
-    //     });
-
-    //     return response;
-    // }
+        return response.status;
+    }
 };
 
 export default deliveries;

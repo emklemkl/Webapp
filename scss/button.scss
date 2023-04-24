@@ -1,0 +1,46 @@
+
+a.button {
+    border: 2px solid #6f6f6f;
+}
+.button {
+    background-image: linear-gradient(#eee 50%, lighten($button-blue, 25%));
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    font-size: 1.4rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    line-height: 1.4;
+    text-decoration: none;
+    // color: #5d1a8b;
+}
+
+.button:hover {
+    background-image: linear-gradient(darken(#eee, 5%), darken($button-blue, 5%));
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+    background-color: $clicked-button-blue;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.hide-button {
+    display: none;
+}
+
+.wide-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1030;
+    margin-bottom: 2.6rem;
+    width: 95%;
+    left: 2.5%;
+    color: $body-font-color;
+}
+
+.make-space-button-sticky {
+    margin-top: 3.4rem;
+}

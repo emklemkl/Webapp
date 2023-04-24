@@ -29,7 +29,7 @@ export default class Navigation extends HTMLElement {
         let navigationLinks = "";
 
         for (let path in routes) {
-            if (!routes[path].hidden){ // Hide unwanted routes
+            if (!routes[path].hidden) { // Hide unwanted routes
                 navigationLinks += `<a href='#${path}'>${routes[path].icon}</a>`;
             }
         }
