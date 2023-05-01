@@ -4,10 +4,14 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta 
+        http-equiv="Content-Security-Policy" 
+        content="default-src 'self' https://lager.emilfolino.se 'unsafe-eval'; style-src 'self';"
+    >
+    
     <link rel="icon" type="icon" href="public/image/favicon-32x32.png">
-    <script src="https://kit.fontawesome.com/3477aceca5.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/3477aceca5.js" crossorigin="anonymous"></script> -->
     <title>Lager-Components</title>
-
     <link rel="stylesheet" href="./css/style.min.css" />
     <script type="module" src="main.js" defer></script>
 </head>
@@ -18,8 +22,9 @@
     <main class="mainmain">
         <router-outlet></router-outlet>
         <navigation-outlet></navigation-outlet>
-        <!-- <products-view></products-view> -->
-        <!-- <product-list></product-list> -->
+        <div class="toast">
+            <div class="toast-body"></div>
+        </div>
     </main>
 </body>
 </html>

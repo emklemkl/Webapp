@@ -8,22 +8,62 @@ export default class Router extends HTMLElement {
             "": {
                 view: "<products-view></products-view>",
                 name: "Lagerlista",
-                icon: `<i class="fa-solid fa-warehouse"></i>`
+                icon: `Lager`
+                // icon: `<i class="fa-solid fa-warehouse"></i>`
             },
             "packlist": {
                 view: "<packlist-view></packlist-view>",
-                icon: `<i class="fa-solid fa-list-check"></i>`
+                icon: `PackLista`
+                // icon: `<img
+                // src='/public/image/venus.svg'
+                // class='aclass' 
+                // alt='triangle with all three sides equal'
+                // height='30'
+                // width='30' />`
+                // icon: "<embed type='image/svg+xml' src='public/image/venus.svg'>"
+                
             },
             "deliveries": {
                 view: "<deliveries-view></deliveries-view>",
                 name: "Inleveranser",
-                icon: `<i class="fa-solid fa-truck-ramp-box"></i>`
+                icon: "InLev"
+                // icon: `<img
+                // src='/public/image/truck-ramp-box.svg'
+                // class='aclass' 
+                // alt='triangle with all three sides equal'
+                // height='30'
+                // width='30' />`
             },
             "deliveries-form": {
                 view: "<deliveries-form-view></deliveries-form-view>",
-                icon: `<i class="fa-solid fa-list-check"></i>`,
+                icon: `x`,
                 name: "Ny inleverans",
                 hidden: true
+            },
+            "invoice-form": {
+                view: "<invoice-form-view></invoice-form-view>",
+                icon: `x`,
+                name: "Ny faktura",
+                hidden: true
+            },
+            "login": {
+                view: "<login-view></login-view>",
+                name: "Logga in",
+                // icon: `<i class="fa-solid fa-right-to-bracket"></i>`,
+                hidden: true
+            },
+            "new-invoice": {
+                view: "<invoices-form-view></invoices-form-view>",
+                name: "Ny faktura",
+                icon: `Ny faktura`,
+                hidden: true
+                // icon: `<i class="fa-solid fa-file-invoice-dollar"></i>`
+            },
+            "invoices": {
+                view: "<invoices-view></invoices-view>",
+                name: "Fakturor",
+                icon: `Fakturor`
+                // icon: `<i class="fa-solid fa-file-invoice-dollar"></i>`
             }
         };
     }

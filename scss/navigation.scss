@@ -15,7 +15,8 @@
     .fa-solid {
         color: darken($header-color, 15%);
         font-size: 1.7rem;
-        text-shadow: darken($header-color, 40%) 1px 1px 7px;
+        text-shadow: darken($header-color, 40%) 1px 1px 1px;
+        max-width: 100%;
     }
 
     .fa-solid:hover {
@@ -29,4 +30,26 @@
         box-shadow: inset 1px -2px darken($header-color, 45%);
         // box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     }
+
+}
+a>.aclass {
+    background-color: lighten($border-brown, 50%);
+    font-size: 1.7rem;
+    border-radius: 0.4rem;
+    text-shadow: darken($header-color, 40%) 1px 1px 1px;
+    max-width: 100%;
+
+}
+
+a>.aclass:hover {
+    background-color: lighten($border-brown, 30%);
+    border-radius: 0.3rem;
+    box-shadow: darken($header-color, 50%) 1px 3px 3px;
+}
+
+a>.aclass:active {
+    background-image: none;
+    text-shadow: darken($header-color, 60%) 1px 1px 3px;
+    box-shadow: inset 1px -2px darken($header-color, 45%);
+    // box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }

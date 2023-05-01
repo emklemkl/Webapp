@@ -66,18 +66,30 @@ single-product:defined {
     }
 }
 
-.flex-dir-rev-row {
-    flex-direction: row !important;
-}
 
-h1 {top: 0}
+h1 {
+    top: 0;
+}
 
 .deliveries-wrapper {
     h3 {
         padding: 0.4rem 0.7rem;
     }
+    
     p {
         padding: 0 1.4rem;
         line-height: 1.8rem;
+    }
+}
+
+// For screen mirroring
+.flex-dir-rev-row {
+    flex-direction: row !important;
+}
+
+#mirror {
+    &:hover {
+        cursor: pointer;
+        
     }
 }
