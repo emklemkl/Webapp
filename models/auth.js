@@ -3,6 +3,7 @@ import { apiKey, baseURL } from "./../utils.js";
 
 const auth = {
     // token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNDdiODYwZWM4N2QyZDFiOGRiYzZhMTM3YmI4MWYwYzAiLCJlbWFpbCI6InRAdC5zZSIsImlhdCI6MTY4Mjk0MDEwMywiZXhwIjoxNjgzMDI2NTAzfQ.rzbv7ilrA0MmssF0gP82j6iz0aEIKnHuf_pFvBkvToo",
+    token: "",
     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNDdiODYwZWM4N2QyZDFiOGRiYzZhMTM3YmI4MWYwYzAiLCJlbWFpbCI6InRAdC5zZSIsImlhdCI6MTY4Mjk2MzQyNCwiZXhwIjoxNjgzMDQ5ODI0fQ.4kqNd2MnwZHvqOo4EiT2MoxerxV93AjNZW4skauaCpE",
 
     login: async function login(username, password) {

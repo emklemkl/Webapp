@@ -93,3 +93,21 @@ h1 {
         
     }
 }
+
+.hidden {
+    display: none;
+}
+
+.missing-data {
+    border: 1px solid $button-blue;
+    background-color: lighten($button-blue, 50%);
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    padding: 2rem;
+    margin: 0.7rem;
+
+    &::after {
+        content: "❗";
+    }
+}

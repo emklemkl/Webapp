@@ -1,25 +1,50 @@
 "use strict";
 import authModel from "../models/auth.js";
 import orders from "../models/orders.js";
+import invoices from "../models/invoices.js";
 import {toast} from "../utils.js";
 
 export default class NewInvoice extends HTMLElement {
     constructor() {
         super();
 
-        this.credentials = {};
+        this.selectedOrder = {};
     }
 
-    createInvoice() {
+    async createInvoice() {
+        /**
+         * Get current date and timstamp dd-mm-yyyy mm:hh
+         */
         let today = new Date();
         let invoiceCreated = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()} `
         invoiceCreated += `${today.getHours()}:${today.getMinutes()}`
-        console.log(invoiceCreated);
 
+        /**
+         * Get invoice last pay date dd-mm-yyyy (12096e5 is a magic number for fourteen days ahead)
+         */
+        let forthnight =  new Date(Date.now()+ 12096e5);
+        const invoiceDue = `${forthnight.getDate()}-${forthnight.getMonth() + 1}-${forthnight.getFullYear()} `
+
+        let invoiceData = {
+            order_id: this.selectedOrder.order_id,
+            total_price: parseInt(this.selectedOrder.total_price),
+            creation_date: invoiceCreated,
+            due_date: invoiceDue,
+        }
+        const response = await invoices.addInvoice(invoiceData);
+        console.log(response);
+        if (response < 300) {
+            let updateOrderData = {
+                name: this.selectedOrder.customer_name,
+                id: this.selectedOrder.order_id,
+                status_id: 600
+            }
+            await orders.updateOrderStatus(updateOrderData);
+        }
+        location.hash = "invoices";
     }
 
     async connectedCallback() {
-
         /**
          * Get all orders
          */
@@ -32,6 +57,9 @@ export default class NewInvoice extends HTMLElement {
         
         form.addEventListener("submit", (event) => {
             event.preventDefault();
+            if (orderCounter === 0) {
+                toast("Det finns inga ordrar.")
+            }
             this.createInvoice();
         });
         /**
@@ -53,30 +81,37 @@ export default class NewInvoice extends HTMLElement {
         let option = document.createElement("option");
 
         // option.setAttribute("value", -99);
-        // option.setAttribute("disabled", "disabled");
-        // option.setAttribute("selected", "true");
-        option.textContent = "En order";
+        option.setAttribute("disabled", "disabled");
+        option.setAttribute("selected", "true");
+        option.textContent = "Alla ordrar";
         select.appendChild(option);
-
+        
+        var orderCounter = 0
         allOrders.forEach((order) => {
-            console.log(order.name);
+        let totalPrice = 0
+        if (order.status_id < 600) {
+            for (const prod of order.order_items){
+                totalPrice += prod.amount * prod.price;
+            }
             let option = document.createElement("option");
             option.setAttribute("value", order.id)
-            option.textContent = `${order.name} (${order.id})`;
+            option.textContent = `${order.id} ${order.name} (status: ${order.status_id})`;
             option.dataset.name = order.name;
-
+            option.dataset.total_price = totalPrice;
             select.appendChild(option);
+            orderCounter++
+        }
         });
 
-
-        
         select.addEventListener("change", (event) => {
-            this.delivery = {
-                ...this.delivery,
-                product_id: parseInt(event.target.value),
-                product_name: event.target.selectedOptions[0].dataset.name,
-                current_stock: parseInt(event.target.selectedOptions[0].dataset.stock)
+            console.log(event.target);
+            this.selectedOrder = {
+                ...this.selectedOrder,
+                order_id: parseInt(event.target.value),
+                customer_name: event.target.selectedOptions[0].dataset.name,
+                total_price: event.target.selectedOptions[0].dataset.total_price
             };
+            // console.log(this.selectedOrder);
         });
         /**
          * Submit button

@@ -26,7 +26,7 @@ export default class DeliveriesList extends HTMLElement {
             </div>`;
         }
         if (!this.innerHTML) {
-            this.innerHTML = `<h3 style="padding: 0.7rem">Inga inleveranser registrerade</h3>`;
+            this.innerHTML = `<p class="missing-data">Inga inleveranser registrerade</p>`;
         }
         this.innerHTML += `<div class="make-space-button-sticky"></div>`;
     }
