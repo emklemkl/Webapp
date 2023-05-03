@@ -7,26 +7,26 @@ export default class OrderList extends HTMLElement {
         this.orders = [];
     }
 
-        /**
+    /**
      * @function mirroredScreen
      * @description Reverses the horizontal view
      */
-        mirroredScreen() {
-            const cont = document.getElementsByClassName("single-order-container");
-    
-            for (const sc of cont) {
-                if (sc.style.flexDirection === "row-reverse") {
-                    sc.style.flexDirection = "row";
-                } else {
-                    sc.style.flexDirection = "row-reverse";
-                }
+    mirroredScreen() {
+        const cont = document.getElementsByClassName("single-order-container");
+
+        for (const sc of cont) {
+            if (sc.style.flexDirection === "row-reverse") {
+                sc.style.flexDirection = "row";
+            } else {
+                sc.style.flexDirection = "row-reverse";
             }
         }
+    }
 
     async connectedCallback() {
         const result = await ordersModel.getOrders();
         let isStatus100 = function(status) {
-            return status.status_id === 100;    
+            return status.status_id === 100;
         };
 
         this.orders = result.filter(isStatus100);
@@ -40,7 +40,7 @@ export default class OrderList extends HTMLElement {
         class='aclass' 
         alt='rotate screen'
         height='25'
-        width='25'>`
+        width='25'>`;
         const list = this.orders.map((order) => `
         <div class="single-wrapper"><single-order order='${JSON.stringify(order)}'>
         </single-order></div>`).join("");

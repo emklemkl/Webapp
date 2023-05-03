@@ -41,9 +41,10 @@ export default class LoginForm extends HTMLElement {
 
     connectedCallback() {
         let form = document.createElement("form");
+
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-            
+
             this.login();
         });
 
@@ -90,25 +91,25 @@ export default class LoginForm extends HTMLElement {
         submitButton.setAttribute("type", "submit");
         submitButton.setAttribute("value", "Logga in");
         submitButton.classList.add("button");
-        
+
         let registerButton = document.createElement("input");
 
         registerButton.setAttribute("type", "submit");
         registerButton.setAttribute("value", "Registrera");
         registerButton.classList.add("button", "button-register");
-        
+
         registerButton.addEventListener("click", (event) => {
             event.preventDefault();
 
-            this.register()
+            this.register();
         });
 
-            form.appendChild(usernameLabel);
-            form.appendChild(username);
-            form.appendChild(passwordLabel);
-            form.appendChild(password);
-            form.appendChild(submitButton);
-            form.appendChild(registerButton);
-            this.appendChild(form);
+        form.appendChild(usernameLabel);
+        form.appendChild(username);
+        form.appendChild(passwordLabel);
+        form.appendChild(password);
+        form.appendChild(submitButton);
+        form.appendChild(registerButton);
+        this.appendChild(form);
     }
 }

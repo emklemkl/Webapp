@@ -23,7 +23,7 @@ export default class NewDelivery extends HTMLElement {
             };
             const response = await productsModel.updateProduct(productData);
 
-            // console.info(response.status);
+            console.info("Update product status: ", response.status);
             location.hash = "deliveries";
         }
     }

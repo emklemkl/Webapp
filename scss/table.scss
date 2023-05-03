@@ -1,0 +1,25 @@
+.table {
+    box-sizing: border-box;
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+
+    th {
+        text-align: left;
+        border: solid 1px #b8824f;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+        padding: 0.2rem 0.8rem;
+    }
+
+    .number-cell {
+        text-align: right;
+    }
+
+    tr:nth-of-type(2n) {
+        background-color: $row-color;
+    }
+}

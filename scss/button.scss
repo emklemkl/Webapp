@@ -19,7 +19,7 @@ a.button {
         background-image: linear-gradient(darken(#eee, 5%), darken($button-blue, 5%));
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     }
-    
+
     &:active {
         background-color: $clicked-button-blue;
         background-image: none;
@@ -30,20 +30,19 @@ a.button {
 .button-register {
     // background-image: linear-gradient(#eee, 50%, lighten($button-blue, 50%));
     background-image: none;
-    background-color: #FFC187 !important;
+    background-color: $brighter-orange !important;
 
     &:hover {
-        background-image: linear-gradient(darken(#ffd587, 5%), darken(#FFC187, 5%));
+        background-image: linear-gradient(darken(#ffd587, 5%), darken($brighter-orange, 5%));
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     }
-    
+
     &:active {
-        background-color: darken(#FFC187, 15%);
+        background-color: darken($brighter-orange, 15%);
         background-image: none;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     }
 }
-
 
 .hide-button {
     display: none;

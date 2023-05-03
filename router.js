@@ -16,12 +16,12 @@ export default class Router extends HTMLElement {
                 icon: `PackLista`
                 // icon: `<img
                 // src='/public/image/venus.svg'
-                // class='aclass' 
+                // class='aclass'
                 // alt='triangle with all three sides equal'
                 // height='30'
                 // width='30' />`
                 // icon: "<embed type='image/svg+xml' src='public/image/venus.svg'>"
-                
+
             },
             "deliveries": {
                 view: "<deliveries-view></deliveries-view>",
@@ -29,7 +29,7 @@ export default class Router extends HTMLElement {
                 icon: "InLev"
                 // icon: `<img
                 // src='/public/image/truck-ramp-box.svg'
-                // class='aclass' 
+                // class='aclass'
                 // alt='triangle with all three sides equal'
                 // height='30'
                 // width='30' />`

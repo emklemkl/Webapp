@@ -14,6 +14,7 @@ const invoices = {
             ...invoiceData,
             api_key: apiKey
         };
+
         console.log(authModel.token);
         const response = await fetch(`${baseURL}/invoices`, {
             body: JSON.stringify(invoice),
@@ -28,7 +29,6 @@ const invoices = {
     },
 
     getInvoices: async function getInvoices() {
-
         const response = await fetch(`${baseURL}/invoices?api_key=${apiKey}`, {
             headers: {
                 'content-type': 'application/json',
@@ -37,6 +37,7 @@ const invoices = {
             method: 'GET'
         });
         const result = await response.json();
+
         return result.data;
     }
 };
