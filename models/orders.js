@@ -11,6 +11,14 @@ const orders = {
         return result.data;
     },
 
+    getOrder: async function getOrder(id) {
+        const response = await fetch(`${baseURL}/orders/${id}?api_key=${apiKey}`);
+        const result = await response.json();
+        // console.log(result.data);
+
+        return result.data;
+    },
+
     /**
      * @function updateOrderStatus
      * @param {object} orderData Takes order Id, name and new status (200 etc)

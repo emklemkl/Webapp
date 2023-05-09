@@ -1,3 +1,5 @@
+import orders from "./models/orders.js"
+
 export default class Router extends HTMLElement {
     constructor() {
         super();
