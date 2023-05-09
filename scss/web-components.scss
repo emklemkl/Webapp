@@ -1,7 +1,10 @@
 
-product-list > h2 {
-    display: flex;
-    justify-content: center;
+product-list {
+
+    > h2 {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 order-list {
@@ -15,6 +18,9 @@ single-product {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 1.2rem, 0.9rem;
+    color: #343434;
+    border-top: solid 2px #b8824f;
 }
 
 single-product {
@@ -22,12 +28,6 @@ single-product {
         display: flex;
         flex-direction: column;
     }
-}
-
-single-product:defined {
-    padding: 1.2rem, 0.9rem;
-    color: #343434;
-    border-top: solid 2px #b8824f;
 }
 
 .single-wrapper {

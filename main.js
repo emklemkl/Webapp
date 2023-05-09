@@ -9,6 +9,7 @@ import Navigation from "./navigation.js";
 import LagerTitle from "./components/lager-title.js";
 import ProductList from "./components/product-list.js";
 import OrderList from "./components/order-list.js";
+import OrderListPacked from "./components/order-list-packed.js";
 import SingleProduct from "./components/single-product.js";
 import NotFound from "./components/not-found.js";
 import SingleOrder from "./components/single-order.js";
@@ -18,6 +19,7 @@ import SingleDelivery from "./components/single-delivery.js";
 import LoginForm from "./components/login-form.js";
 import InvoicesTable from "./components/invoices-table.js";
 import NewInvoice from "./components/new-invoice.js";
+import WildCardList from "./components/wildcard-list.js";
 
 // Views import
 //
@@ -28,6 +30,8 @@ import DeliveriesFormView from "./views/deliveries-form.js";
 import LoginView from "./views/login.js";
 import InvoicesView from "./views/invoices.js";
 import InvoiceFormView from "./views/invoice-form.js";
+import MapView from "./views/map.js";
+import OrdersView from "./views/orders.js";
 
 
 // Router
@@ -49,6 +53,8 @@ customElements.define("single-delivery", SingleDelivery);
 customElements.define("login-form", LoginForm);
 customElements.define("invoices-table", InvoicesTable);
 customElements.define("new-invoice", NewInvoice);
+customElements.define("wildcard-list", WildCardList);
+customElements.define("order-list-packed", OrderListPacked);
 
 // Views
 //
@@ -59,3 +65,5 @@ customElements.define("deliveries-form-view", DeliveriesFormView);
 customElements.define("login-view", LoginView);
 customElements.define("invoices-view", InvoicesView);
 customElements.define("invoices-form-view", InvoiceFormView);
+customElements.define("orders-view", OrdersView);
+customElements.define("map-view", MapView);

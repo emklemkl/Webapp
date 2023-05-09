@@ -25,21 +25,21 @@ export default class OrderList extends HTMLElement {
 
     async connectedCallback() {
         const result = await ordersModel.getOrders();
-        let isStatus100 = function(status) {
-            return status.status_id === 100;
+        let isStatus200 = function(status) {
+            return status.status_id >= 200;
         };
 
-        this.orders = result.filter(isStatus100);
+        this.orders = result.filter(isStatus200);
 
         this.render();
     }
 
     render() {
-        const list = this.orders.map((order) => `
-        <div class="single-wrapper"><single-order order='${JSON.stringify(order)}'>
-        </single-order></div>`).join("");
 
-        this.innerHTML = `<div id="mirror"><h2>Orderlista ⇄</i></h2></div>${list}`;
-        document.getElementById("mirror").addEventListener("click", this.mirroredScreen);
+        
+        const list = this.orders.map((order) => {
+            return `<div class="single-wrapper"><a href="#map/${order.id}"><p class="p-order-packed">${order.name} <br> Order-id:${order.id} (${order.status})</p></a></div>`
+        }).join("");
+        this.innerHTML = `<h2>Packade ordrar</h2>${list}`;
     }
 }

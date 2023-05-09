@@ -34,7 +34,7 @@ export default class SingleOrder extends HTMLElement {
             };
             const response = await productsModel.updateProduct(products);
 
-            console.log(response.status);
+            // console.log(response.status);
             stuffIsWorkingOk = response.status;
             if (response.status > 299) { break; }
         }
@@ -62,7 +62,6 @@ export default class SingleOrder extends HTMLElement {
         //
         //
         const orderIdAmountName = this.order.order_items.map((item) => {
-            console.log(item.name);
             return [item.product_id, item.amount, item.name];
         });
 

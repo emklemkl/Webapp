@@ -3,6 +3,7 @@ export default class Router extends HTMLElement {
         super();
 
         this.currentRoute = "";
+        this.wildcard = "";
 
         this.allRoutes = {
             "": {
@@ -13,7 +14,7 @@ export default class Router extends HTMLElement {
             },
             "packlist": {
                 view: "<packlist-view></packlist-view>",
-                icon: `PackLista`
+                icon: `Packa`
                 // icon: `<img
                 // src='/public/image/venus.svg'
                 // class='aclass'
@@ -61,9 +62,20 @@ export default class Router extends HTMLElement {
             },
             "invoices": {
                 view: "<invoices-view></invoices-view>",
-                name: "Fakturor",
-                icon: `Fakturor`
+                name: "Faktura",
+                icon: `Faktura`
                 // icon: `<i class="fa-solid fa-file-invoice-dollar"></i>`
+            },
+            "orders": {
+                view: "<orders-view class='slide-in'></orders-view>",
+                name: "Skicka",
+                icon: "Skicka"
+            },
+            "map": {
+                view: "<map-view class='slide-in' order=$wildcard></map-view>",
+                name: "Karta",
+                icon: "Karta",
+                hidden: true
             }
         };
     }
@@ -82,11 +94,32 @@ export default class Router extends HTMLElement {
     }
 
     resolveRoute() {
-        this.currentRoute = location.hash.replace("#", "");
+        let cleanHash = location.hash.replace("#", "");
+
+        this.wildcard = "";
+
+        if (cleanHash.indexOf("/") > -1) {
+            let splittedHash = cleanHash.split("/")
+            cleanHash = splittedHash[0];
+            this.wildcard = splittedHash[1];
+        }
+
+        this.currentRoute = cleanHash;
+
         this.render();
     }
 
     render() {
-        this.innerHTML = this.routes[this.currentRoute].view || "<not-found></not-found>";
+        let html = "<not-found></not-found>";
+
+        if (this.routes[this.currentRoute]) {
+            html = this.routes[this.currentRoute].view
+
+            if (this.wildcard) {
+                html = html.replace("$wildcard", this.wildcard)
+            }
+        }
+
+        this.innerHTML = html;
     }
 }
