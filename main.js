@@ -20,6 +20,8 @@ import LoginForm from "./components/login-form.js";
 import InvoicesTable from "./components/invoices-table.js";
 import NewInvoice from "./components/new-invoice.js";
 import WildCardList from "./components/wildcard-list.js";
+import CameraComponent from "./components/camera.js";
+
 
 // Views import
 //
@@ -55,6 +57,7 @@ customElements.define("invoices-table", InvoicesTable);
 customElements.define("new-invoice", NewInvoice);
 customElements.define("wildcard-list", WildCardList);
 customElements.define("order-list-packed", OrderListPacked);
+customElements.define("camera-component", CameraComponent);
 
 // Views
 //

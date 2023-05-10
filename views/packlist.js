@@ -3,10 +3,10 @@ export default class PacklistView extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `<header class="header">
             <lager-title title="Packlista"></lager-title>
-            </header>
+            </header><div class='fade-in' id='slider'>
             <main class="main">
                 <order-list></order-list>
-            </main>
+            </main></div>
     `;
     }
 }

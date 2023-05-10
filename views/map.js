@@ -2,11 +2,10 @@
 /* global L */
 
 import "../leaflet/leaflet.min.js";
-import orders from "../models/orders.js"
+import orders from "../models/orders.js";
 import getCoordinates from "../models/nominatim.js";
 
 export default class MapView extends HTMLElement {
-
     constructor() {
         super();
 
@@ -16,7 +15,7 @@ export default class MapView extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ["order"]
+        return ["order"];
     }
 
     attributeChangedCallback(property, oldValue, newValue) {
@@ -28,14 +27,16 @@ export default class MapView extends HTMLElement {
 
     async connectedCallback() {
         let order = await orders.getOrder(parseInt(this.order));
+
         this.address = `${order.address}, ${order.city}`;
         this.innerHTML = `<div class='slide-in' id='slider'>
-        <h1>MapVieww</h1><h2>${this.address}</h2><div id="map" class="map"></div>
-        </div>`;
+        <h1>MapView</h1><h2>${this.address}</h2>
+        <h4 style="padding:0.7rem">${order.name} (${order.id})</h4>
+        <div id="map" class="map"></div>
+        <camera-component order=${order.id}></camera-component></div>`;
 
         const coords = await getCoordinates(this.address);
-        console.log("🚀 ~ file: map.js:36 ~ MapView ~ connectedCallback ~ coords:", coords)
-        console.log("🚀 ~ file: map.js:36 ~ MapView ~ connectedCallback ~ address:", this.address)
+
         this.renderMap(coords);
     }
 
@@ -47,8 +48,8 @@ export default class MapView extends HTMLElement {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(this.map);
 
-    this.renderLocation();
-    this.renderMarkers([coords[0].lat, coords[0].lon]);
+        this.renderLocation();
+        this.renderMarkers([coords[0].lat, coords[0].lon]);
     }
 
     async renderMarkers(coords) {
@@ -76,7 +77,7 @@ export default class MapView extends HTMLElement {
             navigator.geolocation.getCurrentPosition((position) => {
                 L.marker(
                     [position.coords.latitude,
-                    position.coords.longitude],
+                        position.coords.longitude],
                     {icon: locationMarker}
                 ).addTo(this.map);
             });

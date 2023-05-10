@@ -5,17 +5,20 @@
   "main": "main.js",
   "scripts": {
     "style": "sass scss/style.scss css/style.css --no-source-map",
-    "watch": "sass scss/style.scss css/style.min.css --no-source-map --watch --style=compressed"
+    "watch": "sass scss/style.scss css/style.min.css --no-source-map --watch --style=compressed",
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.36.0",
+    "eslint": "^8.40.0",
     "normalize.css": "^8.0.1",
     "sass": "^1.60.0"
   },
   "dependencies": {
+    "@uploadcare/upload-client": "^6.6.1",
     "leaflet": "^1.9.3"
   }
 }

@@ -8,10 +8,10 @@ export default class InvoicesView extends HTMLElement {
         }
         this.innerHTML = `<header class="header">
             <lager-title title="Login"></lager-title>
-            </header>
+            </header><div class='fade-in' id='slider'>
             <main class="main">
                 <new-invoice></new-invoice>
-            </main>
+            </main></div>
     `;
     }
 }

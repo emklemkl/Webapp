@@ -9,7 +9,6 @@ export default class InvoicesTable extends HTMLElement {
     }
     async connectedCallback() {
         this.invoices = await invoices.getInvoices();
-        console.log(this.invoices);
         let table =  ``;
 
         table += `<table class='table'>
@@ -34,8 +33,6 @@ export default class InvoicesTable extends HTMLElement {
         }
         table += "</table>";
 
-        console.log(table);
-        console.log(counter);
         if (counter === 0) {
             table = "<p class='missing-data'>Inga fakturor skapade</p>";
         }

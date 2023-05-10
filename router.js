@@ -1,5 +1,4 @@
-import orders from "./models/orders.js"
-
+"use strict";
 export default class Router extends HTMLElement {
     constructor() {
         super();
@@ -74,11 +73,19 @@ export default class Router extends HTMLElement {
                 icon: "Skicka"
             },
             "map": {
-                view: "<map-view class='slide-in' order=$wildcard></map-view>",
+                view: "<map-view order=$wildcard></map-view>",
+                // view: "<map-view class='slide-in' order=$wildcard></map-view>",
                 name: "Karta",
                 icon: "Karta",
                 hidden: true
-            }
+            },
+            // "photo": {
+            //     view: "<camera-component></camera-component>",
+            //     // view: "<map-view class='slide-in' order=$wildcard></map-view>",
+            //     name: "Camera",
+            //     icon: "Camera",
+            //     hidden: true
+            // }
         };
     }
 
@@ -101,7 +108,8 @@ export default class Router extends HTMLElement {
         this.wildcard = "";
 
         if (cleanHash.indexOf("/") > -1) {
-            let splittedHash = cleanHash.split("/")
+            let splittedHash = cleanHash.split("/");
+
             cleanHash = splittedHash[0];
             this.wildcard = splittedHash[1];
         }
@@ -115,10 +123,10 @@ export default class Router extends HTMLElement {
         let html = "<not-found></not-found>";
 
         if (this.routes[this.currentRoute]) {
-            html = this.routes[this.currentRoute].view
+            html = this.routes[this.currentRoute].view;
 
             if (this.wildcard) {
-                html = html.replace("$wildcard", this.wildcard)
+                html = html.replace("$wildcard", this.wildcard);
             }
         }
 

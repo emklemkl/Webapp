@@ -4,4 +4,39 @@
     margin: 0.7rem;
     border: 2px solid $border-brown;
     border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#video {
+    border-radius: 0.4rem;
+    border: 2px solid $border-brown;
+    object-fit: contain;
+    background-color: $border-brown;
+}
+
+.camera-child {
+    border-radius: 0.4rem;
+    max-width: 100%;
+    margin: 0.7rem;
+    border: 2px solid $border-brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.7rem 0;
+    background-color: $row-color;
+}
+
+#canvas {
+    border-radius: 0.4rem;
+    border: 2px solid $border-brown;
+    object-fit: contain;
+}
+
+#canvas-div {
+    display: none;
 }

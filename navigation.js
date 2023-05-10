@@ -7,7 +7,7 @@ export default class Navigation extends HTMLElement {
         this.router = new Router();
     }
 
-    connectedCallback() {
+    connectedCallback()                       {
         const routes = this.router.routes;
 
         let navigationLinks = "";
