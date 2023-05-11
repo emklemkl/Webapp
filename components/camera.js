@@ -26,11 +26,11 @@ export default class CameraComponent extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <div class="camera">
-        <div class="camera-child"><video id="video">Video stream not available.</video>
-        <div class="photo-buttons">
-            <button id="startbutton" class="button-register">Take photo</button>
-            <button id="sendbutton" class="button-register">Send photo</button>
-            </div>
+            <div class="camera-child"><video autoplay id="video">Video stream not available.</video>
+                <div class="photo-buttons">
+                    <button id="startbutton" class="button-register">Take photo</button>
+                    <button id="sendbutton" class="button-register">Send photo</button>
+                </div>
             </div>
         </div>
         <div class="camera-child fade-in" id="canvas-div"><canvas id="canvas"></canvas></div>
@@ -94,7 +94,7 @@ export default class CameraComponent extends HTMLElement {
             false
         );
 
-        // Send and update order in lager-api
+        // Send picture to uploadcare and update order_status and img_url in lager-api
         sendbutton.addEventListener(
             "click",
             async (ev) => {
